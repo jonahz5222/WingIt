@@ -45,7 +45,7 @@ class WingedViewController: UIViewController {
                     
                     if let placemark = placemarks.first {
                         if let addressDict = placemark.addressDictionary {
-                            let mkPlacemark = MKPlacemark(coordinate: location.coordinate, addressDictionary: addressDict as! [String : Any])
+                            let mkPlacemark = MKPlacemark(coordinate: location.coordinate, addressDictionary: addressDict as? [String : Any])
                             let mapItem = MKMapItem(placemark: mkPlacemark)
                             mapItem.openInMaps(launchOptions: self.launchOptions)
                             self.dismiss(animated: true, completion: nil)
