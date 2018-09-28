@@ -67,7 +67,7 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cQ6-4K-PYA">
                                 <rect key="frame" x="0.0" y="577" width="375" height="70"/>
-                                <color key="backgroundColor" red="0.21790695190000001" green="0.40350818630000002" blue="0.91969531770000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.2196078431372549" green="0.40392156862745099" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="MBp-FH-Ato"/>
                                 </constraints>
@@ -99,6 +99,7 @@
                     <connections>
                         <outlet property="restaurantTableView" destination="B7u-ZW-gf6" id="0DI-9g-VAh"/>
                         <outlet property="textField" destination="HL6-iY-AB0" id="Eta-Fb-cU0"/>
+                        <outlet property="wingItButton" destination="cQ6-4K-PYA" id="e82-CJ-2gA"/>
                         <segue destination="db7-v5-CHo" kind="presentation" identifier="wingSegue" id="x0X-02-2Zb"/>
                     </connections>
                 </viewController>

@@ -14,16 +14,54 @@ class WheelViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var chosenWing = ""
     @IBOutlet weak var restaurantTableView: UITableView!
     @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var wingItButton: UIButton!
     
-    
+    var superWingToggle = false
+    let superWingItAlert = UIAlertController(title: "Alert", message: "Message", preferredStyle: UIAlertController.Style.alert)
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         restaurantTableView.delegate = self
         restaurantTableView.dataSource = self
+        
+        
+        let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longButtonPress))
+//        let deepPressGestureRecognizer = UILongPressGestureRecognizer(target: self,
+//                                                                    action: "deepPressHandler:",
+//                                                                    threshold: 0.75)
+        wingItButton.addGestureRecognizer(gestureRecognizer)
+        
+        
+        
+        superWingItAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+            switch action.style{
+            case .default:
+                print("default")
+                
+            case .cancel:
+                print("cancel")
+                
+            case .destructive:
+                print("destructive")
+                
+                
+            }}))
     }
     
+    
+    @objc func longButtonPress() {
+//        if superWingToggle {
+//            wingItButton.backgroundColor = UIColor(red:0.22, green:0.40, blue:0.92, alpha:1.0)
+//            wingItButton.titleLabel?.text = "WingIt!"
+//            superWingToggle = false
+//        } else {
+//            wingItButton.backgroundColor = UIColor.red
+//            wingItButton.titleLabel?.text = "Super WingIt!"
+//            superWingToggle = true
+            self.present(superWingItAlert, animated: true, completion: nil)
+//        }
+    }
     @IBAction func textFieldDidEndEditing(_ sender: Any) {
     }
     
@@ -70,6 +108,19 @@ class WheelViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
             self.restaurants.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            if #available(iOS 9.0, *) {
+                if traitCollection.forceTouchCapability == UIForceTouchCapability.available {
+                    
+                    if touch.force == touch.maximumPossibleForce && touch.view == wingItButton {
+                        textField.text = "FORCED"
+                    }
+                }
+            }
         }
     }
     
